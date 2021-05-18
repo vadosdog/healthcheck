@@ -1,0 +1,29 @@
+{
+    "name": "growfood/healthcheck",
+    "description": "Check system status",
+    "type": "project",
+    "require": {},
+    "authors": [
+        {
+            "name": "Nikolay Shishkin",
+            "email": "n.shishkin@growfood.pro"
+        },
+        {
+            "name": "Vasiliev Vadim",
+            "email": "v.vasiliev@growfood.pro"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Gftech\\Healthcheck\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Gftech\\Healthcheck\\HealthCheckServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev"
+}
