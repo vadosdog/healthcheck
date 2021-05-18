@@ -1,8 +1,10 @@
 {
-    "name": "growfood/healthcheck",
+    "name": "vadosdog/healthcheck",
     "description": "Check system status",
     "type": "project",
-    "require": {},
+    "require": {
+        "php": ">=7.2.0"
+    },
     "authors": [
         {
             "name": "Nikolay Shishkin",
