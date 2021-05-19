@@ -12,10 +12,10 @@ class HealthCheckController extends BaseController
     /**
      * Роут для мониторинга работает ли БД, редис и тд. Будет дергаться извне
      *
-     * @param HealthCheckService $healthCheckService
+     * @param HealthCheckServiceInterface $healthCheckService
      * @return JsonResponse
      */
-    public function index(HealthCheckService $healthCheckService): JsonResponse
+    public function index(HealthCheckServiceInterface $healthCheckService): JsonResponse
     {
         try {
             $result = $healthCheckService->run();
