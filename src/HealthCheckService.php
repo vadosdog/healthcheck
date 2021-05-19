@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Redis;
  *
  * @package App\Services\HealthCheck
  */
-class HealthCheckService
+class HealthCheckService implements HealthCheckServiceInterface
 {
     public const REDIS_CHECK_VALUE = 1;
 
@@ -97,8 +97,8 @@ class HealthCheckService
 
     /**
      * Возвращает количество локов в бд
-     * 
-     * @return int 
+     *
+     * @return int
      */
     private function getDatabaseLocks(): int
     {

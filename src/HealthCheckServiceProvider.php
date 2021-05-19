@@ -17,4 +17,9 @@ class HealthCheckServiceProvider extends ServiceProvider
         ], 'migrations');
         $this->loadRoutesFrom(__DIR__ . '/../routes/api.php');
     }
+
+    public function register()
+    {
+        $this->app->bind(HealthCheckServiceInterface::class, HealthCheckService::class);
+    }
 }
