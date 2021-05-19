@@ -1,9 +1,10 @@
 {
     "name": "vadosdog/healthcheck",
     "description": "Check system status",
-    "type": "project",
+    "type": "library",
     "require": {
-        "php": ">=7.2.0"
+        "php": ">=7.2.0",
+        "laravel/framework": "^5.4"
     },
     "authors": [
         {
