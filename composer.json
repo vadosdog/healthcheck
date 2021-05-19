@@ -1,7 +1,8 @@
 {
     "name": "vadosdog/healthcheck",
     "description": "Check system status",
-    "type": "library",
+    "type": "library",,
+    "license": "MIT",
     "require": {
         "php": ">=7.0.0",
         "laravel/framework": "^5.4"
@@ -27,6 +28,5 @@
                 "Gftech\\Healthcheck\\HealthCheckServiceProvider"
             ]
         }
-    },
-    "license": "MIT"
+    }
 }
