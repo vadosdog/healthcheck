@@ -15,6 +15,6 @@ class HealthCheckServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../migrations' => App::databasePath('migrations'),
         ], 'migrations');
-        $this->loadRoutesFrom(__DIR__ . '/../routes');
+        $this->loadRoutesFrom(__DIR__ . '/../routes/api.php');
     }
 }
