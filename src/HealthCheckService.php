@@ -28,7 +28,7 @@ class HealthCheckService implements HealthCheckServiceInterface
     public function run(): array
     {
         // Бьем тревогу, если не отвечает в течение этого времени
-        ini_set('max_execution_time', config('healthcheck.max_execution_time'));
+        ini_set('max_execution_time', config('healthcheck.max_execution_time', 30));
 
         $result = $this->check();
 
@@ -57,7 +57,7 @@ class HealthCheckService implements HealthCheckServiceInterface
      */
     protected function checkDatabase(): bool
     {
-        $table = config('healthcheck.db_table');
+        $table = config('healthcheck.db_table', 'healthcheck');
         $result = DB::select("INSERT INTO $table (id) VALUES (1) ON CONFLICT (id) DO UPDATE SET id = 1");
 
         if (empty($result)) {
@@ -75,8 +75,8 @@ class HealthCheckService implements HealthCheckServiceInterface
      */
     protected function checkRedis(): bool
     {
-        Cache::put(config('healthcheck.redis_key'), self::REDIS_CHECK_VALUE, 60);
-        $result = Cache::get(config('healthcheck.redis_key'));
+        Cache::put(config('healthcheck.redis_key', 'redis-health-status'), self::REDIS_CHECK_VALUE, 60);
+        $result = Cache::get(config('healthcheck.redis_key', 'redis-health-status'));
 
         if (empty($result)) {
             throw new Exception('Empty result for checkRedis');
@@ -93,8 +93,8 @@ class HealthCheckService implements HealthCheckServiceInterface
      */
     protected function checkRedisPersist(): bool
     {
-        Redis::connection('default')->set(config('healthcheck.redis_key'), self::REDIS_CHECK_VALUE);
-        $result = Redis::connection('default')->get(config('healthcheck.redis_key'));
+        Redis::connection('default')->set(config('healthcheck.redis_key', 'redis-health-status'), self::REDIS_CHECK_VALUE);
+        $result = Redis::connection('default')->get(config('healthcheck.redis_key', 'redis-health-status'));
 
         if (empty($result)) {
             throw new Exception('Empty result for checkRedisPersist');
