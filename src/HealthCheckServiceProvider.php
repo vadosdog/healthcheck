@@ -13,6 +13,10 @@ class HealthCheckServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../config/healthcheck.php' => App::configPath('healthcheck.php'),
         ], 'config');
+        $this->mergeConfigFrom(
+            __DIR__ . '/../config/healthcheck.php', 'healthcheck'
+        );
+
         $this->publishes([
             __DIR__ . '/../migrations' => App::databasePath('migrations'),
         ], 'migrations');
