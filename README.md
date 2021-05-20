@@ -30,11 +30,6 @@ php artisan vendor:publish --tag=migrations
 ```
 php artisan migrate
 ```
-
-Сбрасываем кэш роутов
-```
-php artisan route:cache
-```
  
  
 Если все прошло гладко, то при обращении к путю `/api/health` (по умолчанию) мы должны увидеть
@@ -50,4 +45,11 @@ php artisan route:cache
    },
    "success": true
 }
+```
+
+
+
+Возможно если что-то пойдет не так, необходимо будет сбросить кэш роутов
+```
+php artisan route:cache
 ```
