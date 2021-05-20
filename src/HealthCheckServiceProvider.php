@@ -19,7 +19,7 @@ class HealthCheckServiceProvider extends ServiceProvider
         $this->loadRoutesFrom(__DIR__ . '/../routes/api.php');
 
         $router = $this->app->make(Router::class);
-        $router->aliasMiddleware('auth:healthcheck-token', HealthCheckTokenMiddleware::class);
+        $router->aliasMiddleware('healthcheck.auth', HealthCheckTokenMiddleware::class);
     }
 
     public function register()
