@@ -2,6 +2,7 @@
 
 namespace Gftech\Healthcheck;
 
+use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\ServiceProvider;
 
@@ -16,6 +17,9 @@ class HealthCheckServiceProvider extends ServiceProvider
             __DIR__ . '/../migrations' => App::databasePath('migrations'),
         ], 'migrations');
         $this->loadRoutesFrom(__DIR__ . '/../routes/api.php');
+
+        $router = $this->app->make(Router::class);
+        $router->aliasMiddleware('auth:healthcheck-token', HealthCheckTokenMiddleware::class);
     }
 
     public function register()
