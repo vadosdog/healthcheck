@@ -3,4 +3,4 @@
 use Gftech\Healthcheck\HealthCheckController;
 
 Route::get(config('healthcheck.endpoint', '/api/health'), [HealthCheckController::class, 'index'])
-    ->middleware(config('healthcheck.middleware', 'auth:api'));
+    ->middleware(config('healthcheck.middleware', 'auth:healthcheck-token'));
